@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materias — Gestion Universitaria</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion de Materias</h1>
+        <p class="subtitle">Practica de Caja Negra: Particion de equivalencia, analisis de limites</p>
+    </header>
+
+    <nav class="main-nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <a href="estudiantes.html" class="nav-link">Estudiantes</a>
+        <a href="materias.html" class="nav-link active">Materias</a>
+        <a href="matriculas.html" class="nav-link">Matriculas</a>
+    </nav>
+
+    <main>
+        <div id="alertBox" class="alert"></div>
+
+        <div class="panel">
+            <div class="form-container">
+                <h2 id="formTitle">Nueva Materia</h2>
+                <form id="materiaForm" novalidate>
+                    <input type="hidden" id="materiaId" value="">
+
+                    <div class="form-group">
+                        <label for="codigo">Codigo <span class="hint">(formato MAT-XXX, ej: MAT-001)</span></label>
+                        <input type="text" id="codigo" name="codigo" required
+                               pattern="MAT-\d{3}" placeholder="MAT-000" style="text-transform:uppercase;">
+                        <div class="error-msg" id="error-codigo"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre <span class="hint">(3-100 caracteres)</span></label>
+                        <input type="text" id="nombre" name="nombre" required
+                               minlength="3" maxlength="100" placeholder="Ej: Calculo Diferencial">
+                        <div class="error-msg" id="error-nombre"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="creditos">Creditos <span class="hint">(1 a 6, entero)</span></label>
+                        <input type="number" id="creditos" name="creditos" required
+                               min="1" max="6" step="1" placeholder="1-6">
+                        <div class="error-msg" id="error-creditos"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cupoMaximo">Cupo Maximo <span class="hint">(5 a 50, entero)</span></label>
+                        <input type="number" id="cupoMaximo" name="cupoMaximo" required
+                               min="5" max="50" step="1" placeholder="5-50">
+                        <div class="error-msg" id="error-cupoMaximo"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn" id="btnSubmit">Guardar</button>
+                        <button type="button" class="btn btn-warning" id="btnCancel" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-container">
+                <h2>Listado de Materias</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Creditos</th>
+                            <th>Cupo Max.</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="materiasTableBody">
+                        <tr><td colspan="6" class="empty-state">Cargando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>EPN — Validacion y Verificacion de Software — <span id="year"></span></p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/materias.js"></script>
+</body>
+</html>

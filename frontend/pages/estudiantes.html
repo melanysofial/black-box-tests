@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudiantes — Gestion Universitaria</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Gestion de Estudiantes</h1>
+        <p class="subtitle">Practica de Caja Negra: Particion de equivalencia, analisis de limites</p>
+    </header>
+
+    <nav class="main-nav">
+        <a href="../index.html" class="nav-link">Inicio</a>
+        <a href="estudiantes.html" class="nav-link active">Estudiantes</a>
+        <a href="materias.html" class="nav-link">Materias</a>
+        <a href="matriculas.html" class="nav-link">Matriculas</a>
+    </nav>
+
+    <main>
+        <!-- Mensaje de operacion -->
+        <div id="alertBox" class="alert"></div>
+
+        <div class="panel">
+            <!-- Formulario -->
+            <div class="form-container">
+                <h2 id="formTitle">Nuevo Estudiante</h2>
+                <form id="estudianteForm" novalidate>
+                    <input type="hidden" id="estudianteId" value="">
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre <span class="hint">(2-50 caracteres, solo letras)</span></label>
+                        <input type="text" id="nombre" name="nombre" required
+                               minlength="2" maxlength="50" placeholder="Ej: Juan Carlos">
+                        <div class="error-msg" id="error-nombre"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apellido">Apellido <span class="hint">(2-50 caracteres, solo letras)</span></label>
+                        <input type="text" id="apellido" name="apellido" required
+                               minlength="2" maxlength="50" placeholder="Ej: Perez Gomez">
+                        <div class="error-msg" id="error-apellido"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email <span class="hint">(formato valido, unico)</span></label>
+                        <input type="email" id="email" name="email" required placeholder="Ej: juan.perez@email.com">
+                        <div class="error-msg" id="error-email"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fechaNacimiento">Fecha de Nacimiento <span class="hint">(YYYY-MM-DD, min 17 anios)</span></label>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+                        <div class="error-msg" id="error-fechaNacimiento"></div>
+                    </div>
+
+                    <div class="form-group" id="grupoEstado" style="display:none;">
+                        <label for="estado">Estado</label>
+                        <select id="estado" name="estado">
+                            <option value="ACTIVO">ACTIVO</option>
+                            <option value="INACTIVO">INACTIVO</option>
+                            <option value="GRADUADO">GRADUADO</option>
+                            <option value="SUSPENDIDO">SUSPENDIDO</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn" id="btnSubmit">Guardar</button>
+                        <button type="button" class="btn btn-warning" id="btnCancel" style="display:none;">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Tabla -->
+            <div class="table-container">
+                <h2>Listado de Estudiantes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Email</th>
+                            <th>F. Nacimiento</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="estudiantesTableBody">
+                        <tr><td colspan="7" class="empty-state">Cargando...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>EPN — Validacion y Verificacion de Software — <span id="year"></span></p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/estudiantes.js"></script>
+</body>
+</html>

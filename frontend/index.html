@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Universitaria</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sistema de Gestion Universitaria</h1>
+        <p class="subtitle">Practica de Pruebas de Caja Negra — Validacion y Verificacion de Software</p>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html" class="nav-link active">Inicio</a>
+        <a href="pages/estudiantes.html" class="nav-link">Estudiantes</a>
+        <a href="pages/materias.html" class="nav-link">Materias</a>
+        <a href="pages/matriculas.html" class="nav-link">Matriculas</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h2>Bienvenido</h2>
+            <p>Este sistema permite administrar estudiantes, materias y matriculas de una universidad.
+               Esta diseniado para que los estudiantes de <strong>Validacion y Verificacion de Software</strong>
+               practiquen tecnicas de pruebas de caja negra.</p>
+        </section>
+
+        <section class="cards">
+            <div class="card">
+                <h3>Estudiantes</h3>
+                <p>Administrar estudiantes: crear, editar, eliminar y cambiar estado.</p>
+                <a href="pages/estudiantes.html" class="btn">Ir a Estudiantes</a>
+            </div>
+            <div class="card">
+                <h3>Materias</h3>
+                <p>Administrar materias: codigo, creditos y cupo maximo.</p>
+                <a href="pages/materias.html" class="btn">Ir a Materias</a>
+            </div>
+            <div class="card">
+                <h3>Matriculas</h3>
+                <p>Matricular estudiantes en materias y registrar notas.</p>
+                <a href="pages/matriculas.html" class="btn">Ir a Matriculas</a>
+            </div>
+        </section>
+
+        <section class="tecnicas">
+            <h2>Tecnicas de Caja Negra a Aplicar</h2>
+            <div class="tecnica-grid">
+                <div class="tecnica-card">
+                    <h4>Particion de Equivalencia</h4>
+                    <p>Identificar clases de equivalencia validas e invalidas para cada campo de los formularios.</p>
+                </div>
+                <div class="tecnica-card">
+                    <h4>Analisis de Limites</h4>
+                    <p>Probar valores frontera en campos numericos (creditos 1-6, cupo 5-50) y de texto (longitudes min/max).</p>
+                </div>
+                <div class="tecnica-card">
+                    <h4>Tablas de Decision</h4>
+                    <p>Modelar las condiciones para matricular un estudiante (5 condiciones → 32 combinaciones logicas).</p>
+                </div>
+                <div class="tecnica-card">
+                    <h4>Transicion de Estados</h4>
+                    <p>Validar el ciclo de vida de una matricula: MATRICULADO → APROBADO/REPROBADO.</p>
+                </div>
+                <div class="tecnica-card">
+                    <h4>Casos de Uso</h4>
+                    <p>Diseniar casos de prueba a partir de los flujos principales y alternativos de cada operacion.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>EPN — Validacion y Verificacion de Software — {{CURRENT_YEAR}}</p>
+    </footer>
+
+    <script>
+        document.querySelector('footer p').textContent =
+            'EPN — Validacion y Verificacion de Software — ' + new Date().getFullYear();
+    </script>
+</body>
+</html>
